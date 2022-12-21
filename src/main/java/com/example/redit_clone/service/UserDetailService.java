@@ -3,6 +3,7 @@ package com.example.redit_clone.service;
 import com.example.redit_clone.model.User;
 import com.example.redit_clone.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,9 +19,11 @@ import static java.util.Collections.singletonList;
 
 @AllArgsConstructor
 @Service
+@Slf4j
 public class UserDetailService implements UserDetailsService {
 
     private UserRepository userRepository;
+
 
     @Override
     @Transactional(readOnly = true)

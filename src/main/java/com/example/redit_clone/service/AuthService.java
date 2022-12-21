@@ -4,6 +4,7 @@ import com.example.redit_clone.dto.AuthenticationResponse;
 import com.example.redit_clone.dto.LoginRequest;
 import com.example.redit_clone.dto.RegisterRequest;
 import com.example.redit_clone.exceptions.MyCustomException;
+import com.example.redit_clone.exceptions.UserNotFoundException;
 import com.example.redit_clone.model.NotificationEmail;
 import com.example.redit_clone.model.User;
 import com.example.redit_clone.model.VerificationToken;
@@ -11,6 +12,8 @@ import com.example.redit_clone.repository.UserRepository;
 import com.example.redit_clone.repository.VerificationTokenRepository;
 import com.example.redit_clone.security.JwtProvider;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,6 +26,7 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
+@Data
 @Service
 @AllArgsConstructor
 public class AuthService {
@@ -101,5 +105,13 @@ public class AuthService {
         String token =  jwtProvider.generateToken(authenticate);
         return new AuthenticationResponse(token, loginRequest.getUsername());
 
+    }
+
+
+    public User getCurrentUser(String userName) {
+        Optional<User> temp = userRepository.findByUsername(userName);
+        return User.builder().userId(temp.get().getUserId()).userName(temp.get().getUserName())
+                .email(temp.get().getEmail()).password(temp.get().getPassword()).enabled(temp.get().isEnabled())
+                .created(temp.get().getCreated()).build();
     }
 }
