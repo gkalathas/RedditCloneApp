@@ -2,6 +2,7 @@ package com.example.redit_clone.security;
 
 import com.example.redit_clone.exceptions.MyCustomException;
 import com.example.redit_clone.model.User;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -59,6 +60,14 @@ public class JwtProvider {
         }catch (KeyStoreException e) {
             throw new MyCustomException("Exception occurred while retrieving public key");
         }
+    }
+
+    public String getUsernameFromJwt(String token) {
+        Claims claims = parser()
+                .setSigningKey(getPublicKey())
+                .parseClaimsJws(token)
+                .getBody();
+        return claims.getSubject();
     }
 
 }

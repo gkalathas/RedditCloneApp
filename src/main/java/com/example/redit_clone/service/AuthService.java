@@ -56,8 +56,8 @@ public class AuthService {
                 user.getEmail(),"Thank you for signing up to Spring Reddit, " +
                 "please click on the below url to activate your account : " +
                 "http://localhost:8080/api/auth/accountVerification/" + token));
-                //when user clicks this url redirects him in our server and also we will get the token we will look into
-                //our db to enable the user
+                //when user clicks this url redirects him in our server, we also get the token and look into
+                //our db if exists to enable the user
     }
 
     private String generateVerificationToken(User user) {
