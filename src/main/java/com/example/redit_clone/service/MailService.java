@@ -37,6 +37,7 @@ public class MailService {
             messageHelper.setTo(notificationEmail.getRecipient());
             messageHelper.setSubject(notificationEmail.getSubject());
             messageHelper.setText(mailContentBuilder.build(notificationEmail.getBody()));
+
         };
         try{
             mailSender.send(messagePreparator);
