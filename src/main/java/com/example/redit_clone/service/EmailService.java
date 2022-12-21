@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -60,8 +61,14 @@ public class EmailService {
         mimeMessageHelper.setText(htmlContent, true);
         mimeMessageHelper.addInline("templates/OTS-logo-moto.png",
                 new File("templates/ots_logo_01.png"));
-        javaMailSender.send(mimeMessage);
-        log.info("Email sent");
+
+
+        try{
+            javaMailSender.send(mimeMessage);
+            log.info("Email sent");
+        }catch (MailException e) {
+            throw new MyCustomException("error occurred while sending the email to the " + user.getUserName());
+        }
 
         //ClassPathResourse path = new ClassPathResource("templates/OTS-logo-moto.png");
 
