@@ -1,15 +1,19 @@
 package com.example.redit_clone;
 
+import com.example.redit_clone.config.SwaggerConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableAsync;
+
 
 @SpringBootApplication
 @EnableAsync
-public class ReditCloneApplication {
+@Import(SwaggerConfiguration.class)
+public class RedditCloneApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReditCloneApplication.class, args);
+		SpringApplication.run(RedditCloneApplication.class, args);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.example.redit_clone.dto;
 
+
+import com.example.redit_clone.model.VoteType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,10 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PostRequest {
+public class VoteDto {
+
+    private VoteType voteType;
+
     private Long postId;
-    private String postName;
-    private String subredditName;
-    private String url;
-    private String description;
+
 }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReditCloneApplicationTests {
+class RedditCloneApplicationTests {
 
 	@Test
 	void contextLoads() {

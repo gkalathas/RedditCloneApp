@@ -5,14 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PostRequest {
-    private Long postId;
-    private String postName;
-    private String subredditName;
-    private String url;
-    private String description;
+public class LogoutRequest {
+    @NotBlank
+    private String refreshToken;
 }

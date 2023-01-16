@@ -24,13 +24,13 @@ public class SubredditController {
         return new ResponseEntity<>(subredditService.save(subredditDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<SubredditDto>> getAllSubreddits() {
         return new ResponseEntity<>(subredditService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/id")
-    public ResponseEntity<SubredditDto> getSubredditById(@RequestParam Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<SubredditDto> getSubredditById(@PathVariable Long id) {
         return new ResponseEntity<>(subredditService.getById(id), HttpStatus.OK);
     }
 

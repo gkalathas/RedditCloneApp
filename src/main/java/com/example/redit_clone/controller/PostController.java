@@ -27,8 +27,8 @@ public class PostController {
         return new ResponseEntity<>("Post created", HttpStatus.CREATED);
     }
 
-    @GetMapping("/by-id")
-    public ResponseEntity<PostResponse> getPostById(@RequestParam Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<PostResponse> getPostById(@PathVariable Long id) {
         return new ResponseEntity<>(postService.getById(id), HttpStatus.OK);
     }
 
@@ -37,14 +37,14 @@ public class PostController {
         return new ResponseEntity<>(postService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/by-name")
-    public ResponseEntity<PostResponse> getPostByName(@RequestParam String username) {
+    @GetMapping("/by-user/{username}")
+    public ResponseEntity<List<PostResponse>> getPostByName(@PathVariable String username) {
         return new ResponseEntity<>(postService.getByUsername(username), HttpStatus.OK);
     }
 
-    @GetMapping("/by-subreddit")
-    public ResponseEntity<PostResponse> getPostBySubreddit(@RequestParam Long id) {
-        return new ResponseEntity<>(postService.getBySubreddit(id), HttpStatus.OK);
+    @GetMapping("/by-subreddit/{id}")
+    public ResponseEntity<List<PostResponse>> getPostBySubreddit(@PathVariable Long id) {
+        return new ResponseEntity<>(postService.getPostsBySubreddit(id), HttpStatus.OK);
     }
 
 }

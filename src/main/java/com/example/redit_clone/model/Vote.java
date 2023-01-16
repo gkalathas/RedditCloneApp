@@ -20,7 +20,7 @@ public class Vote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long voteId;
 
-    private VoteType votetype;
+    private VoteType voteType;
 
     @NotNull
     @ManyToOne
@@ -32,4 +32,6 @@ public class Vote {
     private User user;
 
 
+
 }
+

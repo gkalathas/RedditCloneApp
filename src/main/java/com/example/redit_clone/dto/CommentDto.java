@@ -5,14 +5,25 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class PostRequest {
+public class CommentDto {
+
+    private Long id;
+
     private Long postId;
-    private String postName;
-    private String subredditName;
-    private String url;
-    private String description;
+
+    private Instant createDate;
+
+    private String text;
+
+    private String userName;
+
+
+
+
 }

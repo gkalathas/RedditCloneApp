@@ -2,18 +2,18 @@ package com.example.redit_clone.dto;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class SubredditDto {
+public class RefreshTokenRequest {
 
-    private Long id;
-    private String name;
-    private String description;
-    private Integer numberOfPosts;
+    @NotBlank
+    private String refreshToken;
+
+    private String username;
 }
